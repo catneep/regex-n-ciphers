@@ -10,21 +10,7 @@ public class Tema4 {
         return "";
     }
     
-    public static String Grupos(String s, int periodo, String perm){
-        s = s.toLowerCase();
-        s = s.replaceAll("\\s", "");
-        char[] string = s.toCharArray();
-        
-        ArrayList<String> characters = null;
-        
-        //Agrupar
-        //Asignar grupos a key respectivo
-        //Reordenar según permutación
-        
-        return "";
-    }
-    
-    public static String GroupEnc(String Plain, String Key){
+    public static String Groups(String Plain, String Key){
         String alphapetic = "abcdefghijklmnopqrstuvwxyz";
         
         Plain = Plain.toLowerCase();
@@ -72,62 +58,6 @@ public class Tema4 {
         return Cipher;
     }
     
-    /**
-     * Groups characters in a given string using a period as a reference
-     * @param cadena
-     * @param periodo
-     * @return 
-     */
-    private static ArrayList<String> agrupar(String cadena, int periodo){
-//        Map<Integer, ArrayList> results = new HashMap<>();
-        ArrayList<String> grupos = new ArrayList<>();
-        
-        int indiceInicial = 0;
-        while(true){
-            int indiceFinal = indiceInicial + periodo;
-            if (indiceFinal >= cadena.length())
-                indiceFinal = cadena.length();
-            
-            String subc = cadena.substring(indiceInicial, indiceFinal);
-            grupos.add(subc);
-            
-            indiceInicial = indiceFinal;
-            
-            if (indiceInicial >= cadena.length())
-                break;
-        }
-        
-        return grupos;
-        
-    }
-    
-    /**
-     * Orders all charcaters with a shared index (base 0) in a dictionary using a base 1 index
-     * @param grupos
-     * @param periodo
-     * @return 
-     */
-    private static Map<Integer, ArrayList> asignar(ArrayList<String> grupos, int periodo){
-        Map<Integer, ArrayList> results = new HashMap<>();
-        
-        for (int i = 0; i < periodo; i++){
-            Integer key = i + 1;
-            ArrayList<String> current = new ArrayList<>();
-            
-            for (String grupo : grupos){
-                char[] c = grupo.toCharArray();
-                try{
-                    current.add("" + c[i]);
-                } catch (ArrayIndexOutOfBoundsException e){
-                    System.out.println("Skipped index in group with less characters.");
-                }
-            }
-            results.put(key, current);
-        }
-        
-        return results;
-    }
-    
     public static String Caesar(String s, int key){
         s = s.toLowerCase();
         StringBuilder result = new StringBuilder();
@@ -154,6 +84,6 @@ public class Tema4 {
         String tester = "Cifrado de texto z1";
         
         System.out.println("Caesar: " + Caesar(tester, 3));
-        System.out.println("Grupos: " + GroupEnc(tester, "llave"));
+        System.out.println("Grupos: " + Groups(tester, "llave"));
     }
 }
