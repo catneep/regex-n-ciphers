@@ -33,6 +33,7 @@ public class Tema4 extends javax.swing.JPanel {
         lblAlgo = new javax.swing.JLabel();
         cbAlgo = new javax.swing.JComboBox<>();
         lblKeyA = new javax.swing.JLabel();
+        txtKey = new javax.swing.JTextField();
         paneInputTxt = new javax.swing.JScrollPane();
         txtInput = new javax.swing.JTextArea();
         paneCipher = new javax.swing.JPanel();
@@ -84,6 +85,7 @@ public class Tema4 extends javax.swing.JPanel {
         lblKeyA.setText("Clave");
         lblKeyA.setPreferredSize(new java.awt.Dimension(29, 26));
         paneOptions.add(lblKeyA);
+        paneOptions.add(txtKey);
 
         paneInput.add(paneOptions);
 
@@ -164,7 +166,37 @@ public class Tema4 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCipherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCipherActionPerformed
-        // TODO add your handling code here:
+        String txt = txtInput.getText();
+        String key = txtKey.getText();
+        
+        if (txt.equals("") || key.equals(""))
+            return;
+        
+        String cipher = "";
+        switch(cbAlgo.getSelectedIndex()){
+            case 0: //Caesar
+                try{
+                    int off = Integer.parseInt(key);
+                    cipher = Logic.Tema4.Caesar(txt, off);
+                } catch (NumberFormatException e){
+                    cipher = "La llave en cifrado Cesar debe ser un número entero";
+                } finally {
+                    break;
+                }
+            case 1: //Grupos
+                cipher = Logic.Tema4.Groups(txt, key);
+                
+                break;
+            case 2: //Doble
+                cipher = Logic.Tema4.DoubleTrans(txt, key, key);
+                
+                break;
+            default:
+                cipher = txt;
+        }
+        
+        txtOutput.setText(cipher);
+        
     }//GEN-LAST:event_btnCipherActionPerformed
 
 
@@ -186,6 +218,7 @@ public class Tema4 extends javax.swing.JPanel {
     private javax.swing.JPanel paneOutputTitle;
     private javax.swing.JScrollPane paneOutputTxt;
     private javax.swing.JTextArea txtInput;
+    private javax.swing.JTextField txtKey;
     private javax.swing.JTextArea txtOutput;
     // End of variables declaration//GEN-END:variables
 }

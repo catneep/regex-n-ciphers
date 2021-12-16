@@ -1,13 +1,12 @@
 package Logic;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Tema4 {
-    public static String TransposicionDoble(String s){
-        return "";
+    public static String DoubleTrans(String text, String keyA, String keyB){
+        String first = Groups(text, keyA);
+        String last = Groups(first, keyB);
+        return last;
     }
     
     public static String Groups(String Plain, String Key){
@@ -60,6 +59,7 @@ public class Tema4 {
     
     public static String Caesar(String s, int key){
         s = s.toLowerCase();
+        s = s.replace(" ", "");
         StringBuilder result = new StringBuilder();
         
         for (char character : s.toCharArray()) {
@@ -81,9 +81,14 @@ public class Tema4 {
     }
     
     public static void main(String[] args) {
-        String tester = "Cifrado de texto z1";
+        String tester = "Cifrado de texto z";
         
-        System.out.println("Caesar: " + Caesar(tester, 3));
-        System.out.println("Grupos: " + Groups(tester, "llave"));
+        String cesar = Caesar(tester, 3);
+        String grupos = Groups(tester, "llave1");
+        String doble = DoubleTrans(tester, "llave1", "llave1");
+                
+        System.out.println("Caesar: " + cesar + "  " + cesar.length());
+        System.out.println("Grupos: " + grupos + "  " + grupos.length());
+        System.out.println("Doble: " + doble + "  " + doble.length());
     }
 }
