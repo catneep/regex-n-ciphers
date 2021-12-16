@@ -1,18 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package GUI;
 
-/**
- *
- * @author havil
- */
 public class Tema4 extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Tema4
-     */
     public Tema4() {
         initComponents();
     }
@@ -187,7 +176,7 @@ public class Tema4 extends javax.swing.JPanel {
                 cipher = Logic.Tema4.Groups(txt, key);
                 
                 break;
-            case 2: //Doble
+            case 2: //Doble - Esta implementación usa la misma llave en ambas iteraciones
                 cipher = Logic.Tema4.DoubleTrans(txt, key, key);
                 
                 break;
